@@ -8,10 +8,10 @@ export class UserData implements UserInterface {
   @Prop({ index: true })
   public id: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, index: true, unique: true })
   public fullName: string;
 
-  @Prop({ required: true, index: true })
+  @Prop({ required: true, index: true, unique: true })
   public email: string;
 
   @Prop()

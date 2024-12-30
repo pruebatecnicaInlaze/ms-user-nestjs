@@ -1,6 +1,6 @@
 export class RegisterUserCommand {
   constructor(
-    public fullName: string,
-    public email: string,
+    public readonly fullName: string,
+    public readonly email: string,
   ) {}
 }
