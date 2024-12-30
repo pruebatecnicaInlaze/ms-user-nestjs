@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UsersController } from '../infrastructure/presentation/http/users.controller';
-import { UserInfrastructureModule } from '../infrastructure';
+import { UsersController, UserInfrastructureModule } from '../infrastructure';
 import {
   FindByEmailUseCase,
   FindUserUseCase,
