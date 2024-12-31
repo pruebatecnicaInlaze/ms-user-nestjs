@@ -8,7 +8,7 @@ import { RegisterUserCommand } from '../command';
 
 @Injectable()
 export class RegisterUserUseCase
-  implements IUseCase<User, ResponseBuildingModel<User>>
+  implements IUseCase<RegisterUserCommand, ResponseBuildingModel<User>>
 {
   constructor(private readonly userRegisterRepository: UserRepository) {}
   public execute(
@@ -22,7 +22,7 @@ export class RegisterUserUseCase
       map((user) => new ResponseBuildingModel<User>(true, user)),
       catchError((error) =>
         of(
-          new ResponseBuildingModel<User>(false, undefined, {
+          new ResponseBuildingModel<User>(false, null, {
             code: 'INTERNAL_SERVER_ERROR',
             error: error.message,
             title: 'Internal Server Error',
