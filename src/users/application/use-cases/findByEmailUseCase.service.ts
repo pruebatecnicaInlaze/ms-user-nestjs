@@ -18,9 +18,9 @@ export class FindByEmailUseCase
       map((user) => new ResponseBuildingModel<User>(true, user)),
       catchError((error) =>
         of(
-          new ResponseBuildingModel<User>(false, undefined, {
+          new ResponseBuildingModel<User>(false, null, {
             code: 'INTERNAL_SERVER_ERROR',
-            error: error.message,
+            error: JSON.stringify(error.message),
             title: 'Internal Server Error',
           }),
         ),

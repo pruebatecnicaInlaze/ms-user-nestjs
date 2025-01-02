@@ -1,8 +1,9 @@
 import { ValidationPipe } from '@nestjs/common';
+import { SwaggerModule } from '@nestjs/swagger';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app.module';
-import { environment } from './config';
+import { environment, OpenApi } from './config';
 
 async function main() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,9 @@ async function main() {
       forbidNonWhitelisted: true,
     }),
   );
+
+  const document = OpenApi.swaggerConfig(app);
+  SwaggerModule.setup('/', app, document);
   await app.listen(environment.port);
 }
 main();
